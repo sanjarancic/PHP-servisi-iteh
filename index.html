@@ -328,6 +328,27 @@
                     break;
                 case "delete":
                     //kod za bonus poene
+                    if (tabela === 'radio_novosti') {
+                        const id_novosti = $('#brisanje').val();
+
+                        $.ajax({
+                            'url': `http://localhost:8080/rest/rest/novosti/${id_novosti}`,
+                            'type': 'DELETE',
+                            'success': function(data) {
+                                alert(`Odgovor od servera> ${data['poruka']}`);
+                            },
+                        });
+                    } else {
+                        const id_kategorije = $('#brisanje').val();
+                        
+                        $.ajax({
+                            'url': `http://localhost:8080/rest/rest/kategorije/${id_kategorije}`,
+                            'type': 'DELETE',
+                            'success': function(data) {
+                                alert(`Odgovor od servera> ${data['poruka']}`);
+                            },
+                        });
+                    }
                     break;
                 default:
                     console.log("default");
